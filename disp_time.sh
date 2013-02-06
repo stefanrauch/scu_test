@@ -20,6 +20,9 @@ function typewriter
     done
 }
 
+# enable uart mode
+eb-write dev/wbm0 0x900000/4 0x1
+
 HOST=`hostname` 
 
 while true
