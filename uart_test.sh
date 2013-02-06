@@ -21,7 +21,7 @@ printf "Base address: 0x%x\n" $status_reg
 eb-write dev/wbm0 0x20400/4 0x1deadbee
 
 # init baudrate to 115200
-eb-write dev/wbm0 $status_reg/4 0x3c6
+eb-write dev/wbm0 $baud_reg/4 0x3c6
 
 for data in {0..255}
 do
