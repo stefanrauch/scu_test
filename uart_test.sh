@@ -25,13 +25,13 @@ eb-write dev/wbm0 $baud_reg/4 0x3c6
 
 for data in {0..255}
 do
-	eb-write dev/wbm0 $tx_reg/4 $data
-	status_read=0x`eb-read -b -f dev/wbm0 $status_reg/4`
+	eb-write -p -b dev/wbm0 $tx_reg/4 $data
+	status_read=0x`eb-read -b -p dev/wbm0 $status_reg/4`
 	# testing with bitmask for bit 2
 	let foo=status_read\&2
 	# print with conversion to unicode
 	if [ $foo -gt 0 ]; then
-		read_val=0x`eb-read -b -f dev/wbm0 $rx_reg/4`
+		read_val=0x`eb-read -b -p dev/wbm0 $rx_reg/4`
 		let read_val=read_val\&255
 		if [ $data != $read_val ]; then
 			echo "UART error"
