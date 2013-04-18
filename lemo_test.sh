@@ -2,6 +2,8 @@
 
 lemo_read=`eb-read dev/wbm0 0x800000/4`
 
+# set mux to gpio
+eb-write dev/wbm0 0x800008/4 0xa
 eb-write dev/wbm0 0x800004/4 0x0
 
 while true; do
